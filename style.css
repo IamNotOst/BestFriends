@@ -1,0 +1,314 @@
+body {
+    margin: 0;
+    font-family: sans-serif;
+    background-color: #000;
+    color: #fff;
+}
+
+header {
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    position: sticky;
+    top: 10;
+    z-index: 100;
+    box-shadow: 0px 1px 3px rgba(255, 255, 255, 0.1); /* Добавляем тонкую тень внизу */
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+header .logo {
+    display: flex;
+    align-items: center;
+    margin-right: auto;
+}
+
+header .logo img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+header nav {
+    display: flex;
+    align-items: center;
+}
+
+header nav a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+header nav a:hover {
+    color: #ccc;
+}
+
+main {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card {
+    background-color: #fff;
+    color: #000;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex; /* Используем flexbox для макета */
+    align-items: center;
+    justify-content: space-between; /* Распределяем пространство между элементами */
+    padding: 20px;
+    width: 80%;
+    max-width: 800px;
+    margin-bottom: 30px;
+    height: 250px;
+    box-sizing: border-box; /* Важно для учета padding */
+    opacity: 0; /* Изначально делаем карточку невидимой */
+    animation: fadeIn 1s ease-in-out forwards; /* Запускаем анимацию fadeIn */
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0; /* В начале анимации карточка невидима */
+        transform: translateY(50px); /* Немного сдвигаем вниз для большего эффекта */
+    }
+    100% {
+        opacity: 1; /* В конце анимации карточка полностью видна */
+        transform: translateY(0); /* Возвращаем в исходное положение */
+    }
+}
+
+.card-content {
+    flex: 1; /* Занимает оставшееся место */
+    padding-right: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.avatar img {
+    width: 150px;
+    height: 150px;
+    border-radius: 15px;
+    border: 2px solid #000;
+    object-fit: cover;
+}
+
+.card .avatar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card .avatar img {
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Добавляем анимацию для свечения */
+}
+
+.card:hover .avatar img {
+    transform: scale(1.1); /* Увеличиваем картинку при наведении на карточку */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); /* Добавляем черное свечение при наведении */
+}
+
+.gradient-text {
+    font-size: 2.5em;
+    font-weight: bold;
+    margin-bottom: 5px;
+    margin-left: 0;
+    background: linear-gradient(90deg, yellow, green, blue, indigo, violet, red, orange, yellow);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 800% auto;
+    animation: gradient 80s linear infinite;
+}
+
+.id {
+    font-size: 1em;
+    color: #333;
+    margin-left: 0;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% center;
+    }
+
+    100% {
+        background-position: 800% center;
+    }
+}
+
+#friends {
+    width: 80%;
+    max-width: 800px;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+#friends h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    opacity: 0; /* Изначально делаем заголовок невидимым */
+    animation: fadeInHeading 1s ease-in-out forwards; /* Запускаем анимацию fadeInHeading */
+    animation-delay: 1s; /* Задержка в 1 секунду, чтобы анимация началась после появления карточки */
+    text-shadow: 0 0 10px rgba(128, 128, 128, 1.8); /* Серое свечение */
+}
+
+@keyframes fadeInHeading {
+    0% {
+        opacity: 0; /* В начале анимации заголовок невидимый */
+        transform: translateY(10px); /* Небольшое смещение вниз */
+    }
+    100% {
+        opacity: 1; /* В конце анимации заголовок полностью видимый */
+        transform: translateY(0); /* Возвращаем в исходное положение */
+    }
+}
+
+.friends-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    width: 100%;
+}
+
+.friend-card {
+    background-color: #fff;
+    color: #000;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    text-align: center;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    transition: transform 0.2s ease-in-out;
+    opacity: 0; /* Изначально невидимые */
+    transform: translateY(-50px); /* Изначально смещены вверх */
+    animation: fadeInFriend 0.5s ease-out forwards; /* Анимация для плавного появления */
+}
+
+.friend-card:nth-child(1) {
+    animation-delay: 1.5s; /* Задержка для первой карточки */
+}
+
+.friend-card:nth-child(2) {
+    animation-delay: 1.7s; /* Задержка для второй карточки */
+}
+
+.friend-card:nth-child(3) {
+    animation-delay: 1.9s; /* Задержка для третьей карточки */
+}
+
+.friend-card:nth-child(4) {
+    animation-delay: 2.1s; /* Задержка для четвертой карточки */
+}
+
+.friend-card:nth-child(5) {
+    animation-delay: 2.3s; /* Задержка для пятой карточки */
+}
+
+.friend-card:nth-child(6) {
+    animation-delay: 2.5s; /* Задержка для шестой карточки */
+}
+
+.friend-card:nth-child(7) {
+    animation-delay: 2.7s; /* Задержка для седьмой карточки */
+}
+
+.friend-card:nth-child(8) {
+    animation-delay: 2.9s; /* Задержка для восьмой карточки */
+}
+
+.friend-card:nth-child(9) {
+    animation-delay: 3.1s; /* Задержка для девятой карточки */
+}
+
+.friend-card img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 15px 15px 0 0;
+    margin-bottom: 5px;
+}
+
+.friend-card h3 {
+    font-size: 0.8em;
+    margin: 5px 0;
+}
+
+.friend-card p {
+    font-size: 0.6em;
+    color: #555;
+    margin: 0;
+}
+
+@keyframes fadeInFriend {
+    0% {
+        opacity: 0; /* Изначально невидимые */
+        transform: translateY(-50px); /* Смещены вверх */
+    }
+    100% {
+        opacity: 1; /* Появляются */
+        transform: translateY(0); /* Возвращаются на место */
+    }
+}
+
+footer {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    header nav {
+        margin-top: 10px;
+    }
+
+    header nav a {
+        margin-left: 0;
+        margin-right: 15px;
+    }
+
+    .card {
+        flex-direction: column;
+        align-items: center;
+        height: auto;
+    }
+
+    .card-content {
+        padding-right: 0;
+        text-align: center;
+    }
+
+    .avatar img {
+        width: 120px;
+        height: 120px;
+        margin-top: 20px;
+    }
+  } 
