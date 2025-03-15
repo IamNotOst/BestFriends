@@ -98,8 +98,8 @@ main {
 }
 
 .avatar img {
-    width: 150px;
-    height: 150px;
+    width: 200px;
+    height: 200px;
     border-radius: 15px;
     border: 2px solid #000;
     object-fit: cover;
